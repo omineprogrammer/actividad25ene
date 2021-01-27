@@ -1,0 +1,36 @@
+<div 
+  class="container-fluid d-block w-100"
+  [ngStyle]="{'background-color':getBgColor(), 'height':'100vh'}">
+    <div class="row p-4">
+      <div class="col-6 mx-auto">
+        <div 
+          [ngClass]="{
+            'bg-light': !getDarkMode(), 
+            'text-white bg-dark': getDarkMode()
+          }"
+          class="card text-center"
+        >
+          <div class="card-header">
+            Tarjeta
+          </div>
+          <div [ngSwitch]="getDarkMode()" class="card-body">
+            <h5 *ngSwitchCase="false" class="card-title">La tarjeta esta en modo claro.</h5>
+            <h5 *ngSwitchCase="true" class="card-title">La tarjeta esta en modo obscuro.</h5>
+            <p class="card-text">el texto de arriba cambia con un ngSwicht</p>
+            <p class="card-text">el color de fondo cambia con un ngStyle</p>
+            <p class="card-text">el color de la tarjeta cambia con un ngClass usando clases de bootstrap</p>
+            <button 
+            (click)="swichDarkMode()" 
+            [ngClass]="{
+              'btn-light': getDarkMode(), 
+              'btn-dark': !getDarkMode()
+            }"
+            class="btn btn-primary">Cambiar modo</button>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
